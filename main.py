@@ -25,13 +25,20 @@ class Game:
                      1, 1, 1, 1, 1, 1, 1, 1,
                      4, 2, 3, 5, 6, 3, 2, 4]
 
+        self.selected_skin = "Standard"
         self.assets = Assets()
-        self.sprites = self.assets.sprites
+        self.sprites = self.assets.directories
 
     def game_run(self):
         while self.run:
             self.clock.tick(self.fps_cap)
 
+
+            knight_b = pygame.transform.scale_by(self.sprites["./src/skins/" + self.selected_skin]["knight b.svg"], 0.5)
+            pawn_b = pygame.transform.scale_by(self.sprites["./src/skins/" + self.selected_skin]["pawn b.svg"], 5)
+
+            self.screen.blit(knight_b, (0, 40))
+            self.screen.blit(pawn_b, (150, 40))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
