@@ -7,12 +7,12 @@ class Assets:
         self.sprites = []
         self.directories = {}
 
-        print("what's in src: " + str(os.listdir("src")))
+        # print("what's in src: " + str(os.listdir("src")))
         # os.chdir("./src")
 
         self.open_folder("./src")
 
-        print(self.directories)
+        # print(self.directories)
         
         # print(os.listdir("./src/skins/long (3D VIEW)"))
 
