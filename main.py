@@ -23,7 +23,7 @@ class Game:
         self.fps_cap = 60
         self.mouse = [0, 0, 0]
 
-        self.grid = [[4, 2, 3, 6, 5, 3, 2, 4],
+        self.grid = [[4, 2, 3, 5, 6, 3, 2, 4],
                      [1, 1, 1, 1, 1, 1, 1, 1],
                      [0, 0, 0, 0, 0, 0, 0, 0],
                      [0, 0, 0, 0, 0, 0, 0, 0],
@@ -67,7 +67,9 @@ class Game:
         self.selected_piece = 0
 
 
-    def calculate_legal_moves(self, board, turn):
+    def calculate_legal_moves(self, board, turn): 
+        # a faster way to do this would be keeping track of only the pieces' positions 
+        # and only running the calculations for black or white pieces depending on the turn
         for file in range(0,8):
             rank = 0
             for cell in board[file]:
@@ -142,19 +144,19 @@ class Game:
         tile_size = 70
         mousex, mousey = pygame.mouse.get_pos()
 
-        for x_ in range(8):
-
+        for y_ in range(8):
             if self.player == 1:
-                x = x_
+                y = 7-y_
             else:
-                x = x_
+                y = y_
 
-            for y_ in range(8):
+            for x_ in range(8):
+
 
                 if self.player == 1:
-                    y = 7-y_
+                    x = x_
                 else:
-                    y = y_
+                    x = x_
                     
                 # if y == 0 or x == 0:
                 #     self.screen.blit(self.current_sprites["cell " + str(x+y*8+1)], (x_*tile_size,y_*tile_size))
